@@ -4,7 +4,7 @@ Steps run this API:
 
 1: download MongoDB: https://www.mongodb.com/dr/fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-4.0.1-signed.msi/download
 
-2: Install and create a new server with the Url default: localhost:27017
+2: Install and create a new server with the default Url: localhost:27017
 
 3: Create a new database: Bliss
 
