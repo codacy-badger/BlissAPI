@@ -1,0 +1,150 @@
+{
+	"info": {
+		"_postman_id": "0bf2c1f8-d474-4629-86c7-f31b593cf19b",
+		"name": "Bliss",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ImageUrl\": \"https://dummyimage.com/600x400/000/fff.png&text=question+1+image+(600x400)\",\r\n  \"ThumbUrl\": \"https://dummyimage.com/120x120/000/fff.png&text=question+1+image+(120x120)\",\r\n  \"Question\": \"test filter\",\r\n  \"PublishedAt\": \"2015-08-05T08:40:51.620Z\",\r\n  \"choices\": [\r\n    {\r\n      \"choice\": \"Swift\",\r\n      \"votes\": 10\r\n    },\r\n    {\r\n      \"choice\": \"Python\",\r\n      \"votes\": 20\r\n    },\r\n    {\r\n      \"choice\": \"Objective-C\",\r\n      \"votes\": 30\r\n    },\r\n    {\r\n      \"choice\": \"Ruby\",\r\n      \"votes\": 40\r\n    }\r\n  ]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:64600/question/api/v1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "64600",
+					"path": [
+						"question",
+						"api",
+						"v1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:64600/question/api/v1/10a52090-662f-4af4-a865-82e3ad219d33",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "64600",
+					"path": [
+						"question",
+						"api",
+						"v1",
+						"10a52090-662f-4af4-a865-82e3ad219d33"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATH",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Id\": \"c15bd1ef-b58f-4e5c-9f94-0b9d548ac9be\",\r\n  \"ImageUrl\": \"https://dummyimage.com/600x400/000/fff.png&text=question+1+image+(600x400) - update\",\r\n  \"ThumbUrl\": \"https://dummyimage.com/120x120/000/fff.png&text=question+1+image+(120x120) - update\",\r\n  \"Question\": \"Favourite programming language? - update\",\r\n  \"PublishedAt\": \"2028-08-05T08:40:51.620Z\",\r\n  \"choices\": [\r\n    {\r\n      \"choice\": \"Swift - update\",\r\n      \"votes\": 100\r\n    },\r\n    {\r\n      \"choice\": \"Python - update\",\r\n      \"votes\": 200\r\n    },\r\n    {\r\n      \"choice\": \"Objective-C - update\",\r\n      \"votes\": 300\r\n    },\r\n    {\r\n      \"choice\": \"Ruby - update\",\r\n      \"votes\": 400\r\n    }\r\n  ]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:64600/question/api/v1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "64600",
+					"path": [
+						"question",
+						"api",
+						"v1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get - Filter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:64600/question/api/v1?limit=limit&offset=offset&filter=programming",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "64600",
+					"path": [
+						"question",
+						"api",
+						"v1"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "limit"
+						},
+						{
+							"key": "offset",
+							"value": "offset"
+						},
+						{
+							"key": "filter",
+							"value": "programming"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get - Health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:64600/health/api/v1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "64600",
+					"path": [
+						"health",
+						"api",
+						"v1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
