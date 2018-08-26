@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestsAPI", "UnitTestsAPI.csproj", "{5EDE20D3-9064-4E81-8E59-1DED4DC25FF5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{0607E89B-0438-425D-9BA9-F4B2FE37C1CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{FB121AB1-1399-4367-ABC3-B289484A7E5D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5EDE20D3-9064-4E81-8E59-1DED4DC25FF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EDE20D3-9064-4E81-8E59-1DED4DC25FF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EDE20D3-9064-4E81-8E59-1DED4DC25FF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EDE20D3-9064-4E81-8E59-1DED4DC25FF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0607E89B-0438-425D-9BA9-F4B2FE37C1CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0607E89B-0438-425D-9BA9-F4B2FE37C1CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0607E89B-0438-425D-9BA9-F4B2FE37C1CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0607E89B-0438-425D-9BA9-F4B2FE37C1CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB121AB1-1399-4367-ABC3-B289484A7E5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB121AB1-1399-4367-ABC3-B289484A7E5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB121AB1-1399-4367-ABC3-B289484A7E5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB121AB1-1399-4367-ABC3-B289484A7E5D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {98561CE7-0726-4883-959A-280B35872CEF}
+	EndGlobalSection
+EndGlobal
