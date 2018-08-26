@@ -47,11 +47,6 @@
                         .AllowAnyHeader();
                 }));
 
-            services.AddSwaggerGen(c =>
-                {
-                    c.SwaggerDoc("v1", new Info { Title = "Bliss", Version = "v1" });
-                });
-
             services.AddMvc()
                 .AddJsonOptions(
                     opts =>
@@ -67,13 +62,16 @@
                         options.Database = Configuration.GetSection("MongoDb:Database").Value;
                     });
 
-            //services.AddHealthChecks();
-
             services.AddScoped<IMongoContext<QuestionEntity>, QuestionContext>();
             services.AddScoped<IMongoRespository, MongoRespository<QuestionEntity>>();
             services.AddScoped<IQuestionRepository, QuestionRepository>();
-            
+
             services.AddScoped<IQuestionService, QuestionService>();
+
+            services.AddSwaggerGen(c =>
+                {
+                    c.SwaggerDoc("v1", new Info { Title = "Bliss API", Version = "v1" });
+                });
 
             services.ConfigureSwaggerGen(options =>
                 {
@@ -102,25 +100,26 @@
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseStaticFiles();
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
-            // specifying the Swagger JSON endpoint.
-            app.UseSwaggerUI(
-                c =>
-                    {
-                        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Bliss API V1");
-                        c.RoutePrefix = "swagger/ui";
-                    });
+            //// Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
+            //// specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Bliss API V1");
+                    c.RoutePrefix = string.Empty;
+                });
 
             app.UseSwagger(action =>
                 {
                     action.RouteTemplate = "swagger/{documentName}/swagger.json";
                 });
+
+            app.UseHttpsRedirection();
+            app.UseMvc();
         }
     }
 }
