@@ -43,7 +43,7 @@
             }
             else
             {
-                result = await Find<QuestionEntity>(limit, offset);
+                result = await Find(limit, offset);
             }
             
             return result;

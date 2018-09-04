@@ -9,12 +9,12 @@
     /// <summary>
     /// 
     /// </summary>
-    /// <typeparam name="TU"></typeparam>
-    public abstract class MongoRespository<TU> 
+    /// <typeparam name="T"></typeparam>
+    public abstract class MongoRespository<T> where T : class 
     {
-        private readonly IMongoContext<TU> _mongoContext;
+        private readonly IMongoContext<T> _mongoContext;
 
-        protected MongoRespository(IMongoContext<TU> mongoContext)
+        protected MongoRespository(IMongoContext<T> mongoContext)
         {
             _mongoContext = mongoContext;
         }
@@ -24,9 +24,9 @@
         /// </summary>
         /// <typeparam name="T">Type of the Entity</typeparam>
         /// <param name="filter">Filters to apply on find</param>
-        public async Task<List<T>> Find<T>(FilterDefinition<T> filter)
+        public async Task<List<T>> Find(FilterDefinition<T> filter)
         {
-            IAsyncCursor<T> task = await GetCollection<T>().FindAsync(filter);
+            IAsyncCursor<T> task = await GetCollection().FindAsync(filter);
             List<T> list = await task.ToListAsync();
             return list;
         }
@@ -38,11 +38,11 @@
         /// <param name="filter">Filters to apply on find</param>
         /// <param name="limit">Number of the itens per page</param>
         /// <param name="offset">Number of the page</param>
-        public async Task<List<T>> Find<T>(FilterDefinition<T> filter, int limit, int offset)
+        public async Task<List<T>> Find(FilterDefinition<T> filter, int limit, int offset)
         {
             var skip = limit * (offset - 1);
 
-            var list = await GetCollection<T>().Find(filter).Skip(skip).Limit(limit).ToListAsync();
+            var list = await GetCollection().Find(filter).Skip(skip).Limit(limit).ToListAsync();
 
             return list;
         }
@@ -53,11 +53,11 @@
         /// <typeparam name="T">Type of the Entity</typeparam>
         /// <param name="limit">Number of the itens per page</param>
         /// <param name="offset">Number of the page</param>
-        public async Task<List<T>> Find<T>(int limit, int offset)
+        public async Task<List<T>> Find(int limit, int offset)
         {
             var skip = limit * (offset - 1);
 
-            var list = await GetCollection<T>().Find(_ => true).Skip(skip).Limit(limit).ToListAsync();
+            var list = await GetCollection().Find(_ => true).Skip(skip).Limit(limit).ToListAsync();
 
             return list;
         }
@@ -67,9 +67,9 @@
         /// </summary>
         /// <typeparam name="T">Type of the item</typeparam>
         /// <param name="newModel">Model to insert</param>
-        public async Task<T> Insert<T>(T newModel)
+        public async Task<T> Insert(T newModel)
         {
-            await this.GetCollection<T>().InsertOneAsync(newModel);
+            await this.GetCollection().InsertOneAsync(newModel);
 
             return newModel;
         }
@@ -80,9 +80,9 @@
         /// <typeparam name="T">Type of the item to be updated</typeparam>
         /// <param name="filter">Filter to find a item to be updated</param>
         /// <param name="update">Item to update</param>
-        public async Task<UpdateResult> Update<T>(FilterDefinition<T> filter, UpdateDefinition<T> update)
+        public async Task<UpdateResult> Update(FilterDefinition<T> filter, UpdateDefinition<T> update)
         {
-            return await GetCollection<T>().UpdateOneAsync(filter, update);
+            return await GetCollection().UpdateOneAsync(filter, update);
         }
 
         /// <summary>
@@ -91,17 +91,17 @@
         /// <typeparam name="T">Type of the item to be saved</typeparam>
         /// <param name="filter">Filter to aplly a item to be saved</param>
         /// <param name="replacement">Item to save</param>
-        public async Task<ReplaceOneResult> Save<T>(FilterDefinition<T> filter, T replacement)
+        public async Task<ReplaceOneResult> Save(FilterDefinition<T> filter, T replacement)
         {
             UpdateOptions options = new UpdateOptions { IsUpsert = true };
 
-            return await GetCollection<T>().ReplaceOneAsync(filter, replacement, options);
+            return await GetCollection().ReplaceOneAsync(filter, replacement, options);
         }
 
         /// <summary>
         /// Get collection in database
         /// </summary>
-        private IMongoCollection<T> GetCollection<T>()
+        private IMongoCollection<T> GetCollection()
         {
             MongoCollectionSettings collectionSettings = new MongoCollectionSettings { GuidRepresentation = GuidRepresentation.Standard };
             return _mongoContext.Database.GetCollection<T>(_mongoContext.Collection.CollectionNamespace.CollectionName, collectionSettings);

@@ -10,3 +10,7 @@
 /packages
 /Tests/UnitTestAPI/bin/Debug
 /Tests/UnitTestAPI/obj/Debug
+/API/bin/Release/net461
+/Infrastructure/bin/Release/netstandard2.0
+/Tests/UnitTestAPI/bin/Release
+/Tests/UnitTestAPI/obj/Release
