@@ -41,7 +41,7 @@
             DateTime testDateTime = DateTime.Now;
             const decimal TES_DECIMAL = decimal.MaxValue;
             List<string> tetListString = new List<string>();
-            List<int> testListInt = new List<int>() { 123 };
+            List<int> testListInt = new List<int> { 123 };
 
             //Act
             bool isNullOrDefaultString = Utility.IsNullOrDefault(TEST_DEFAULT);

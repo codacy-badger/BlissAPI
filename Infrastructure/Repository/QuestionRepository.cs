@@ -54,7 +54,7 @@
         {
             FilterDefinition<QuestionEntity> filter = Builders<QuestionEntity>.Filter.Eq(o => o.Id, questionEntity.Id);
 
-            await this.Save(filter, questionEntity);
+            await this.Save(filter, questionEntity).ConfigureAwait(false);
         }
     }
 }
