@@ -14,7 +14,7 @@
         public void TestMapperBetweenObjectsSimple(string stringType, decimal decimalType, float floatType, int intType)
         {
             //Arrange
-            ObjFromSimple objFromSimple = new ObjFromSimple()
+            ObjFromSimple objFromSimple = new ObjFromSimple
             {
                 StringType = stringType,
                 DateType = DateTimeOffset.Now,
@@ -43,7 +43,7 @@
         public void TestMapperBetweenObjectsComplex(string stringType, decimal decimalType, float floatType, int intType)
         {
             //Arrange
-            ObjFromComplex objFromComplex = new ObjFromComplex()
+            ObjFromComplex objFromComplex = new ObjFromComplex
             {
                 StringType = stringType,
                 DateType = DateTimeOffset.Now,
@@ -52,7 +52,7 @@
                 IntType = intType
             };
 
-            ObjFromSimple objFromSimple = new ObjFromSimple()
+            ObjFromSimple objFromSimple = new ObjFromSimple
             {
                 StringType = stringType,
                 DateType = DateTimeOffset.Now,
@@ -100,7 +100,7 @@
         public void TestMapperBetweenComplexObjectsNotOverride(string stringType, decimal decimalType, float floatType, int intType)
         {
             //Arrange
-            ObjFromComplex objFromComplex = new ObjFromComplex()
+            ObjFromComplex objFromComplex = new ObjFromComplex
             {
                 StringType = stringType,
                 DateType = DateTimeOffset.Now,
@@ -109,7 +109,7 @@
                 IntType = intType
             };
 
-            ObjFromSimple objFromSimple = new ObjFromSimple()
+            ObjFromSimple objFromSimple = new ObjFromSimple
             {
                 StringType = stringType,
                 DateType = DateTimeOffset.Now,
@@ -122,7 +122,7 @@
             objFromComplex.ListObjSimples.Add(objFromSimple);
 
             DateTimeOffset testDateTimeOffset = DateTimeOffset.Now;
-            ObjDestComplex objDestComplex = new ObjDestComplex()
+            ObjDestComplex objDestComplex = new ObjDestComplex
             {
                 IntType = 123,
                 DateType = DateTimeOffset.MaxValue,

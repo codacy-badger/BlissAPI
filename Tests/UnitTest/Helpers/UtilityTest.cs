@@ -8,7 +8,7 @@
     public class UtilityTest
     {
         [Fact]
-        public void TestIsNullOrDefaultTrue()
+        public static void TestIsNullOrDefaultTrue()
         {
             //Arrange
             const int TEST_INT = default(int);
@@ -33,7 +33,7 @@
         }
 
         [Fact]
-        public void TestIsNullOrDefaultFalse()
+        public static void TestIsNullOrDefaultFalse()
         {
             //Arrange
             string testDefault = "test";
@@ -41,7 +41,7 @@
             DateTime testDateTime = DateTime.Now;
             decimal tesDecimal = decimal.MaxValue;
             List<string> tetListString = new List<string>();
-            List<int> testListInt = new List<int>() { 123 };
+            List<int> testListInt = new List<int> { 123 };
 
             //Act
             bool isNullOrDefaultString = Utility.IsNullOrDefault(testDefault);
