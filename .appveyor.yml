@@ -42,7 +42,7 @@ build_script:
   - dotnet build "API" -c %CONFIGURATION% --version-suffix %LABEL%
   - dotnet build "Infrastructure" -c %CONFIGURATION% --version-suffix %LABEL%
   
-  - dotnet build "Tests/UnitTestAPI" -c %CONFIGURATION% --version-suffix %LABEL%
+  - dotnet build "Tests/UnitTest" -c %CONFIGURATION% --version-suffix %LABEL%
   
 after_build:
   - dotnet build -c %CONFIGURATION% --version-suffix %LABEL%
@@ -84,9 +84,9 @@ before_test:
 
 # to run your custom scripts instead of automatic tests
 test_script:
-  - dotnet test "Tests/UnitTestAPI" -c %CONFIGURATION%  
+  - dotnet test "Tests/UnitTest" -c %CONFIGURATION%  
 
-  - OpenCover.Console.exe -register:user -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:"test /p:DebugType=full Tests/UnitTestAPI" -output:"UnitTestAPIResult.xml" -oldstyle
+  - OpenCover.Console.exe -register:user -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:"test /p:DebugType=full Tests/UnitTest" -output:"UnitTestResult.xml" -oldstyle
   
 # scripts to run after tests
 #after_test:
