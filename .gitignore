@@ -14,3 +14,8 @@
 /Infrastructure/bin/Release/netstandard2.0
 /Tests/UnitTestAPI/bin/Release
 /Tests/UnitTestAPI/obj/Release
+/API/bin/Debug/netcoreapp2.1
+/Infrastructure/bin/Debug/netcoreapp2.1
+/Tests/UnitTest/bin/Debug/netcoreapp2.1
+/Tests/UnitTest/obj/Debug/netcoreapp2.1
+/Tests/UnitTest/obj
