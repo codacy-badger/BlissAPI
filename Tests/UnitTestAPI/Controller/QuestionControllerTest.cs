@@ -21,7 +21,7 @@
         /// Test when the QuestionForCreationDto is null or the json was in a bad format
         /// </summary>
         [Test]
-        public async Task PostWithNullParametersBadRequest()
+        public static async Task PostWithNullParametersBadRequest()
         {
             //Arrange
             Mock<IQuestionService> moqQuestionService = new Mock<IQuestionService>();
@@ -40,7 +40,7 @@
         /// Test with PublishedAt are null
         /// </summary>
         [Test]
-        public async Task PostWithMissingPublishedAtUnprocessableEntity()
+        public static async Task PostWithMissingPublishedAtUnprocessableEntity()
         {
             //Arrange
             Mock<IQuestionService> moqQuestionService = new Mock<IQuestionService>();
@@ -68,7 +68,7 @@
         /// Test for when all parameters are passed
         /// </summary>
         [Test]
-        public async Task PostWithAllDataNeededOk()
+        public static async Task PostWithAllDataNeededOk()
         {
             Mock<IQuestionService> moqQuestionService = new Mock<IQuestionService>();
             var controller = new QuestionController(moqQuestionService.Object);
@@ -94,7 +94,7 @@
         #region Get
 
         [Test]
-        public async Task GetWithNullParametersBadRequest()
+        public static async Task GetWithNullParametersBadRequest()
         {
             //Arrange
             Mock<IQuestionService> moqQuestionService = new Mock<IQuestionService>();
@@ -120,7 +120,7 @@
         /// <typeparam name="T">Type expected</typeparam>
         /// <param name="result">Result from the controller</param>
         /// <param name="statusCodes">Status code expected</param>
-        private void ProcessAcationResult<T>(IActionResult result, int statusCodes)
+        private static void ProcessAcationResult<T>(IActionResult result, int statusCodes)
         {
             Assert.IsInstanceOf<T>(result);
             dynamic status = ((T)result);

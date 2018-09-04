@@ -1,5 +1,6 @@
 ﻿namespace Infrastructure.Repository
 {
+    using Infrastructure.Context;
     using Infrastructure.Entities;
     using MongoDB.Driver;
     using System;
@@ -7,27 +8,24 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    /// <inheritdoc />
-    public class QuestionRepository : IQuestionRepository
+    public class QuestionRepository : MongoRespository<QuestionEntity>, IQuestionRepository
     {
-        private readonly IMongoRespository _mongoRespository;
-
-        public QuestionRepository(IMongoRespository mongoRespository)
+        public QuestionRepository(IMongoContext<QuestionEntity> mongoContext)
+            : base(mongoContext)
         {
-            _mongoRespository = mongoRespository;
         }
 
         /// <inheritdoc />
         public async Task Create(QuestionEntity questionEntity)
         {
-            await _mongoRespository.Insert(questionEntity);
+            await Insert(questionEntity);
         }
 
         /// <inheritdoc />
         public async Task<QuestionEntity> Get(Guid id)
         {
             FilterDefinition<QuestionEntity> filter = Builders<QuestionEntity>.Filter.Eq(o => o.Id, id);
-            var result = await _mongoRespository.Find(filter);
+            var result = await Find(filter);
 
             return result.FirstOrDefault();
         }
@@ -39,13 +37,13 @@
 
             if (!string.IsNullOrEmpty(filterQuery))
             {
-                FilterDefinition<QuestionEntity> filter = Builders<QuestionEntity>.Filter.Where(o => o.Question.ToLower().Contains(filterQuery.ToLower()));
-                filter |= Builders<QuestionEntity>.Filter.ElemMatch(q => q.Choices, q => q.Choice.ToLower().Contains(filterQuery.ToLower()));
-                result = await _mongoRespository.Find(filter, limit, offset);
+                FilterDefinition<QuestionEntity> filter = Builders<QuestionEntity>.Filter.Where(o => o.Question.ToLowerInvariant().Contains(filterQuery.ToLowerInvariant()));
+                filter |= Builders<QuestionEntity>.Filter.ElemMatch(q => q.Choices, q => q.Choice.ToLowerInvariant().Contains(filterQuery.ToLowerInvariant()));
+                result = await Find(filter, limit, offset);
             }
             else
             {
-                result = await _mongoRespository.Find<QuestionEntity>(limit, offset);
+                result = await Find<QuestionEntity>(limit, offset);
             }
             
             return result;
@@ -56,7 +54,7 @@
         {
             FilterDefinition<QuestionEntity> filter = Builders<QuestionEntity>.Filter.Eq(o => o.Id, questionEntity.Id);
 
-            await this._mongoRespository.Save(filter, questionEntity);
+            await this.Save(filter, questionEntity);
         }
     }
 }

@@ -3,3 +3,10 @@
 ################################################################################
 
 /API/bin/Debug/net461
+/.vs
+/API/obj
+/Infrastructure/bin/Debug/netstandard2.0
+/Infrastructure/obj
+/packages
+/Tests/UnitTestAPI/bin/Debug
+/Tests/UnitTestAPI/obj/Debug

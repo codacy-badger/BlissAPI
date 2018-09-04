@@ -14,8 +14,8 @@
         public void TestMapperBetweenObjectsSimple(string stringType, decimal decimalType, float floatType, int intType)
         {
             //Arrange
-            ObjFromSimple objFromSimple = new ObjFromSimple()
-            {
+            ObjFromSimple objFromSimple = new ObjFromSimple
+                                              {
                 StringType = stringType,
                 DateType = DateTimeOffset.Now,
                 DecimalType = decimalType,
@@ -43,8 +43,8 @@
         public void TestMapperBetweenObjectsComplex(string stringType, decimal decimalType, float floatType, int intType)
         {
             //Arrange
-            ObjFromComplex objFromComplex = new ObjFromComplex()
-            {
+            ObjFromComplex objFromComplex = new ObjFromComplex
+                                                {
                 StringType = stringType,
                 DateType = DateTimeOffset.Now,
                 DecimalType = decimalType,
@@ -52,8 +52,8 @@
                 IntType = intType
             };
 
-            ObjFromSimple objFromSimple = new ObjFromSimple()
-            {
+            ObjFromSimple objFromSimple = new ObjFromSimple
+                                              {
                 StringType = stringType,
                 DateType = DateTimeOffset.Now,
                 DecimalType = decimalType,
@@ -100,8 +100,8 @@
         public void TestMapperBetweenComplexObjectsNotOverride(string stringType, decimal decimalType, float floatType, int intType)
         {
             //Arrange
-            ObjFromComplex objFromComplex = new ObjFromComplex()
-            {
+            ObjFromComplex objFromComplex = new ObjFromComplex
+                                                {
                 StringType = stringType,
                 DateType = DateTimeOffset.Now,
                 DecimalType = decimalType,
@@ -109,8 +109,8 @@
                 IntType = intType
             };
 
-            ObjFromSimple objFromSimple = new ObjFromSimple()
-            {
+            ObjFromSimple objFromSimple = new ObjFromSimple
+                                              {
                 StringType = stringType,
                 DateType = DateTimeOffset.Now,
                 DecimalType = decimalType,
@@ -122,8 +122,8 @@
             objFromComplex.ListObjSimples.Add(objFromSimple);
 
             DateTimeOffset testDateTimeOffset = DateTimeOffset.Now;
-            ObjDestComplex objDestComplex = new ObjDestComplex()
-            {
+            ObjDestComplex objDestComplex = new ObjDestComplex
+                                                {
                 IntType = 123,
                 DateType = DateTimeOffset.MaxValue,
                 DecimalType = decimal.MaxValue,

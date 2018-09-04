@@ -2,15 +2,13 @@
 {
     using System;
     using System.Collections.Generic;
-
     using API.Helpers;
-
     using NUnit.Framework;
 
     public class UtilityTest
     {
         [Test]
-        public void TestIsNullOrDefaultTrue()
+        public static void TestIsNullOrDefaultTrue()
         {
             //Arrange
             const int TEST_INT = default(int);
@@ -35,7 +33,7 @@
         }
 
         [Test]
-        public void TestIsNullOrDefaultFalse()
+        public static void TestIsNullOrDefaultFalse()
         {
             //Arrange
             const string TEST_DEFAULT = "test";

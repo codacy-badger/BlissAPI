@@ -63,7 +63,6 @@
                     });
 
             services.AddScoped<IMongoContext<QuestionEntity>, QuestionContext>();
-            services.AddScoped<IMongoRespository, MongoRespository<QuestionEntity>>();
             services.AddScoped<IQuestionRepository, QuestionRepository>();
 
             services.AddScoped<IQuestionService, QuestionService>();
