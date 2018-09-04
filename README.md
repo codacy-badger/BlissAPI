@@ -1,4 +1,4 @@
-# BlissAPI
+# BlissAPI [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d0559a60662b4ac9b86fc3a1cbb3850e)](https://www.codacy.com/app/mathiasdouglas/BlissAPI?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mathiasdouglas/BlissAPI&amp;utm_campaign=Badge_Grade)
 
 Steps run this API:
 
