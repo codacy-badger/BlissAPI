@@ -32,8 +32,7 @@ configuration:
 
 # build platform, i.e. x86, x64, Any CPU. This setting is optional
 platform:
-  - x86
-  - x64
+  - Any CPU
 
 before_build:
  - nuget restore
@@ -43,7 +42,7 @@ build_script:
   - dotnet build "API" -c %CONFIGURATION% --version-suffix %LABEL%
   - dotnet build "Infrastructure" -c %CONFIGURATION% --version-suffix %LABEL%
   
-  - dotnet build "UnitTestAPI" -c %CONFIGURATION% --version-suffix %LABEL%
+  - dotnet build "Tests/UnitTestAPI" -c %CONFIGURATION% --version-suffix %LABEL%
   
 after_build:
   - dotnet build -c %CONFIGURATION% --version-suffix %LABEL%
@@ -54,8 +53,6 @@ after_build:
 #---------------------------------#
   
 # environment variables
-environment:
-  CODACY_PROJECT_TOKEN: 909dd767787943658cde4290d6d68ee5
 
 # Automatically register private account and/or project AppVeyor NuGet feeds.
 nuget:
@@ -75,3 +72,22 @@ notifications:
   on_build_success: false
   on_build_failure: true
   on_build_status_changed: true
+  
+  #---------------------------------#
+#       tests configuration       #
+#---------------------------------#
+
+# scripts to run before tests
+before_test:
+ - choco install opencover.portable
+ - choco install codecov
+
+# to run your custom scripts instead of automatic tests
+test_script:
+  - dotnet test "Tests/UnitTestAPI" -c %CONFIGURATION%  
+
+  - OpenCover.Console.exe -register:user -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:"test /p:DebugType=full Tests/UnitTestAPI" -output:"UnitTestAPIResult.xml" -oldstyle
+  
+# scripts to run after tests
+#after_test:
+# - codecov -f "UnitTestAPIResult.xml" -t 81c4ac46-b5bc-4d0d-8c4f-4de04812e6e3 
