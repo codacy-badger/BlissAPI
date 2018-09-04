@@ -42,7 +42,7 @@ build_script:
   - dotnet build "API" -c %CONFIGURATION% --version-suffix %LABEL%
   - dotnet build "Infrastructure" -c %CONFIGURATION% --version-suffix %LABEL%
   
-  - dotnet build "Tests/UnitTestAPI" -c %CONFIGURATION% --version-suffix %LABEL%
+  - dotnet build "Tests/UnitTest" -c %CONFIGURATION% --version-suffix %LABEL%
   
 after_build:
   - dotnet build -c %CONFIGURATION% --version-suffix %LABEL%
